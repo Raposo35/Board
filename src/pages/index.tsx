@@ -7,13 +7,36 @@ export default function Home() {
 			<Head>
 				<title>Board - Organizando suas tarefas</title>
 			</Head>
-			<div>
-				<div className={styles.title}>
+			<main className={styles.contentContainer}>
+				<img src="/images/board-user.svg" alt="Ferramenta board" />
+
+				<section className={styles.callToAction}>
 					<h1>
-						Olá mundo <span>Raposo</span>
+						Uma ferramenta para o seu dia a dia Escreva, planeje e
+						organize-se...
 					</h1>
+					<p>
+						<span>100% Gratuita</span> e online.
+					</p>
+				</section>
+				<div className={styles.donaters}>
+					<span>Apoiadores:</span>
+					<div className={styles.donatersImages}>
+						<img
+							src="https://lh3.googleusercontent.com/ogw/ADea4I7OQWOtEsd6_CaTa83R5VlDrwj2jNwpcN0R5nBj1w=s32-c-mo"
+							alt="usuário 1"
+						/>
+						<img
+							src="https://lh3.googleusercontent.com/ogw/ADea4I7OQWOtEsd6_CaTa83R5VlDrwj2jNwpcN0R5nBj1w=s32-c-mo"
+							alt="usuário 1"
+						/>
+						<img
+							src="https://lh3.googleusercontent.com/ogw/ADea4I7OQWOtEsd6_CaTa83R5VlDrwj2jNwpcN0R5nBj1w=s32-c-mo"
+							alt="usuário 1"
+						/>
+					</div>
 				</div>
-			</div>
+			</main>
 		</>
 	);
 }

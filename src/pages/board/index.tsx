@@ -29,55 +29,11 @@ export default function Board() {
 						<div className={styles.actions}>
 							<div>
 								<div>
-									<FiCalendar size={20} color="#ffb800" />
+									<FiCalendar size={20} color="#FFF" />
 									<time>17 julho 2021</time>
 								</div>
 								<button>
-									<FiEdit2 size={20} color="#fff" />
-									<span>Editar</span>
-								</button>
-							</div>
-							<button>
-								<FiTrash size={20} color="#ff3636" />
-								<span>Excluir</span>
-							</button>
-						</div>
-					</article>
-					<article className={styles.taskList}>
-						<p>
-							Aprender criar projetos usando next js e aplicando firebase como
-							back
-						</p>
-						<div className={styles.actions}>
-							<div>
-								<div>
-									<FiCalendar size={20} color="#ffb800" />
-									<time>17 julho 2021</time>
-								</div>
-								<button>
-									<FiEdit2 size={20} color="#fff" />
-									<span>Editar</span>
-								</button>
-							</div>
-							<button>
-								<FiTrash size={20} color="#ff3636" />
-								<span>Excluir</span>
-							</button>
-						</div>
-					</article>
-					<article className={styles.taskList}>
-						<p>
-							Aprender criar projetos usando next js e aplicando firebase como
-							back
-						</p>
-						<div className={styles.actions}>
-							<div>
-								<div>
-									<FiCalendar size={20} color="#ffb800" />
-									<time>17 julho 2021</time>
-								</div>
-								<button>
-									<FiEdit2 size={20} color="#fff" />
+									<FiEdit2 size={20} color="#1c1cac" />
 									<span>Editar</span>
 								</button>
 							</div>
@@ -117,7 +73,6 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
 		};
 	}
 
-	console.log(session.user);
 	return {
 		props: {},
 	};

@@ -2,7 +2,7 @@
   max-width: 1120px;
   margin: 2rem auto;
   padding: 2rem;
-  background-color: #17181f;
+  background-color: #1c1cac;
   border-radius: 6px;
 
   form{
@@ -13,11 +13,11 @@
     input{
       width: 90%;
       height: 50px;
-      background-color: #20212c;
+      background-color: #aeb0bf;
       border: 1px solid #424242;
       border-radius: 6px;
       padding: 3px 10px;
-      color: #FFF;
+      color: #20212c ;
     }
 
     button{
@@ -26,7 +26,7 @@
       height: 50px;
       border: 0;
       border-radius: 6px;
-      background-color: #FFB800 ;
+      background-color: #aeb0bf ;
     }
   }
 
@@ -38,14 +38,14 @@
 }
 
 .taskList {
-  background-color: #20212c;
+  background-color: #aeb0bf;
   margin: 1rem 0;
   padding: 0.7rem;
   border-radius: 6px;
 
   p{
     cursor: pointer;
-    color: #f2f6fc;
+    color: #20212c;
     font-size: 1rem;
     line-height: 150%;
   }
@@ -62,7 +62,7 @@
       justify-content: center;
       align-items: center;
       time{
-        color: #FFB800;
+        color: #20212c ;
         margin-left: 5px;
         margin-right: 1rem;
       }
@@ -81,7 +81,7 @@
 
       span{
         margin-left: 5px;
-        color: #fff;
+        color: #20212c;
         cursor: pointer;
       }
 
@@ -98,11 +98,11 @@
   max-width: 1120px;
   margin: 1rem auto;
   padding: 1rem;
-  background-color: #20212c;
+  background-color:#1c1cac;
   border-radius: 6px;
 
   h3{
-    color: #FFB800;
+    color: #FFF;
     font-size: 2rem;
   }
 

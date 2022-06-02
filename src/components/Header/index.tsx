@@ -7,7 +7,7 @@ export function Header() {
 		<header className={styles.headerContainer}>
 			<div className={styles.headerContent}>
 				<Link href="/">
-					<img src="/images/logo.svg" alt="logo meu board" />
+					<img src="/images/logo.png" alt="logo meu board" width={90} />
 				</Link>
 				<nav>
 					<Link href="/">

@@ -1,3 +1,4 @@
+import { GetStaticProps } from 'next';
 import Head from 'next/head'; // colocar título por página
 import styles from '../styles/styles.module.scss';
 
@@ -8,7 +9,7 @@ export default function Home() {
 				<title>Board - Organizando suas tarefas</title>
 			</Head>
 			<main className={styles.contentContainer}>
-				<img src="/images/board-user.svg" alt="Ferramenta board" />
+				<img src="/images/logo-user-2.png" alt="Ferramenta board" width={480} />
 
 				<section className={styles.callToAction}>
 					<h1>
@@ -40,3 +41,11 @@ export default function Home() {
 		</>
 	);
 }
+
+// pagina estática
+export const getStaticProps: GetStaticProps = async () => {
+	return {
+		props: {},
+		revalidate: 60 * 60, // atualiza a cada 60 minutos
+	};
+};

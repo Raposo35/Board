@@ -1,4 +1,7 @@
 import Head from 'next/head';
+import { GetServerSideProps } from 'next'; //lado servidor
+import { getSession } from 'next-auth/client'; //lado servidor
+
 import styles from './styles.module.scss';
 import { FiPlus, FiCalendar, FiEdit2, FiTrash, FiClock } from 'react-icons/fi';
 import { SuportButton } from 'components/SuportButton';
@@ -98,3 +101,24 @@ export default function Board() {
 		</>
 	);
 }
+
+// verificação do lado do servidor
+
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+	const session = await getSession({ req }); // pegar o user da api do google
+
+	// verificar se tem uma sessão se não! redirecionar para o home
+	if (!session?.id) {
+		return {
+			redirect: {
+				destination: '/',
+				permanent: false,
+			},
+		};
+	}
+
+	console.log(session.user);
+	return {
+		props: {},
+	};
+};

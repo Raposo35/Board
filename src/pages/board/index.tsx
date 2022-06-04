@@ -7,7 +7,14 @@ import { format } from 'date-fns'; // formatar a data
 import Link from 'next/link';
 
 import styles from './styles.module.scss';
-import { FiPlus, FiCalendar, FiEdit2, FiTrash, FiClock } from 'react-icons/fi';
+import {
+	FiPlus,
+	FiCalendar,
+	FiEdit2,
+	FiTrash,
+	FiClock,
+	FiX,
+} from 'react-icons/fi';
 import { SuportButton } from 'components/SuportButton';
 
 type TaskList = {
@@ -31,12 +38,35 @@ export default function Board({ user, data }: BoardProps) {
 	const [input, setInput] = useState(''); // cadastrar tarefas no firebase
 	//const [taskList, setTaskList] = useState([]);
 	const [taskList, setTaskList] = useState<TaskList[]>(JSON.parse(data)); // vei receber data e converter em array
+	const [taskEdit, setTaskEdit] = useState<TaskList | null>(null); // controlar editar
 
 	async function handleAddTask(e: FormEvent) {
 		e.preventDefault();
 
 		if (input === '') {
 			alert('Escreva alguma terefa!!');
+			return;
+		}
+
+		if (taskEdit) {
+			await firebase
+				.firestore()
+				.collection('tarefas')
+				.doc(taskEdit.id)
+				.update({
+					tarefa: input,
+				})
+				.then(() => {
+					let data = taskList;
+
+					// procurar o index da tarefa que esta sendo editada
+					let taskIndex = taskList.findIndex((item) => item.id === taskEdit.id);
+					data[taskIndex].tarefa = input;
+
+					setTaskList(data);
+					setTaskEdit(null);
+					setInput('');
+				});
 			return;
 		}
 
@@ -86,12 +116,30 @@ export default function Board({ user, data }: BoardProps) {
 			});
 	}
 
+	async function handleTaskEdite(task: TaskList) {
+		setTaskEdit(task);
+		setInput(task.tarefa);
+	}
+
+	function handleCancelEdit() {
+		setInput('');
+		setTaskEdit(null);
+	}
+
 	return (
 		<>
 			<Head>
 				<title>Minhas tarefas - Board</title>
 			</Head>
 			<main className={styles.container}>
+				{taskEdit && (
+					<span className={styles.warnText}>
+						<button onClick={handleCancelEdit}>
+							<FiX size={30} color="#FF3636" />
+						</button>
+						Você esta editando uma tarefa!
+					</span>
+				)}
 				<form onSubmit={handleAddTask}>
 					<input
 						type="text"
@@ -119,7 +167,11 @@ export default function Board({ user, data }: BoardProps) {
 										<FiCalendar size={20} color="#1c1cac" />
 										<time>{task.createdFormated}</time>
 									</div>
-									<button>
+									<button
+										onClick={() => {
+											handleTaskEdite(task);
+										}}
+									>
 										<FiEdit2 size={20} color="#1c1cac" />
 										<span>Editar</span>
 									</button>
